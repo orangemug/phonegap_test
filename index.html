@@ -23,21 +23,15 @@
 		
     <script>
       function show_pic() {
-        alert('1')
-        navigator.camera.getPicture(function() {alert('yes')}, function(fail) {alert('no!'); alert(fail);}, {
-          quality: 100,
-          sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM
-        });
-        alert('2')
+        navigator.camera.getPicture(dump_pic, fail, {quality: 100});
       }
   
       function dump_pic(data) {
-        alert('3')
         document.getElementById("test_img").src = "data:image/jpeg;base64," + data;
       }
   
       function fail(fail) {
-        alert("FAIL");
+        alert("ERROR: "+fail);
       }
 
     </script>
@@ -58,6 +52,8 @@
 		  <p>This is where you are</p>
 		  <div class="app_button" id="welcome_button">Go Back</div>
 		</div>
+
+		<img id="test_img" src="" style="border-style: solid; border-width: 1px; width: 200px; width: 200px;">
 
 		<div id="settings" class="view">
 		  <form id="settings_form">
