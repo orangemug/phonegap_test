@@ -21,13 +21,34 @@
 		
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		
+    <script>
+      function show_pic() {
+        alert('1')
+        navigator.camera.getPicture(function() {alert('yes')}, function(fail) {alert('no!'); alert(fail);}, {
+          quality: 100,
+          sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM
+        });
+        alert('2')
+      }
+  
+      function dump_pic(data) {
+        alert('3')
+        document.getElementById("test_img").src = "data:image/jpeg;base64," + data;
+      }
+  
+      function fail(fail) {
+        alert("FAIL");
+      }
+
+    </script>
 	</head>
 	<body>
  		<div id="title_bar">Phone<strong>Gap</strong> Training App</div>
 
 		<div id="welcome" class="view">
 		  <div class="app_button" id="map_button">Show My Location</div>
-  	      <div class="app_button" id="settings_button">Settings</div>
+  	  <div class="app_button" id="settings_button">Settings</div>
+      <div class="app_button" onclick="show_pic()">Camera</div>
 		</div>
 
 		<div id="map" class="view">
